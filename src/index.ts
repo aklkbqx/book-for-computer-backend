@@ -11,7 +11,13 @@ const port = process.env.API_PORT || 3000;
 
 const app = new Elysia()
     .use(swagger())
-    .use(cors())
+    .use(cors({
+        origin: '*',
+        methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
+        credentials: true,
+        maxAge: 3600
+    }))
     .use(staticPlugin({
         assets: 'public',
         prefix: '/'
