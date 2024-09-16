@@ -2,7 +2,7 @@ services:
   app:
     build: .
     ports:
-      - "5001:5001"
+      - "5001:3000"
     volumes:
       - .:/app
       - /app/node_modules

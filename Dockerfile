@@ -14,7 +14,7 @@ COPY . .
 RUN bunx prisma generate
 
 # เปิด port ที่แอปพลิเคชันใช้ (เปลี่ยนตามที่คุณต้องการ)
-EXPOSE 5001
+EXPOSE 3000
 
 # รันคำสั่งเพื่อเริ่มแอปพลิเคชัน
 CMD ["bun", "run", "src/index.ts"]
