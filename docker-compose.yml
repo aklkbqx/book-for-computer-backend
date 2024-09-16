@@ -1,13 +1,19 @@
 services:
-  # app:
-  #   build: .
-  #   ports:
-  #     - "5001:5001"
-  #   volumes:
-  #     - .:/app
-  #     - /app/node_modules
-  #   environment:
-  #     - NODE_ENV=production
+  app:
+    build: .
+    ports:
+      - "5001:5001"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=mariadb
+      - DB_USER=username
+      - DB_PASSWORD=password
+      - DB_NAME=book-computer-db
+    depends_on:
+      - mariadb
 
   mariadb:
     container_name: mariadb_book-computer
