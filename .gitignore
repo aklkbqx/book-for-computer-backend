@@ -6,6 +6,7 @@
 .pnp.js
 
 /mariadb
+*.sql
 
 # testing
 /coverage
