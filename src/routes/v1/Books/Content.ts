@@ -1,5 +1,5 @@
 import Elysia from "elysia";
-import { Prisma, PrismaClient, TypeBook } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
