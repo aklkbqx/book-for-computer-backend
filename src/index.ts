@@ -1,12 +1,10 @@
 import { Elysia } from 'elysia';
 import { log } from 'console';
-import dotenv from 'dotenv';
 import cors from '@elysiajs/cors';
 import { staticPlugin } from '@elysiajs/static';
 import apiRouteV1 from './routes/v1';
 import { swagger } from '@elysiajs/swagger'
 
-dotenv.config();
 const port = process.env.API_PORT || 3000;
 
 const app = new Elysia()
@@ -31,4 +29,4 @@ const app = new Elysia()
         log(`🦊 Elysia is running at http://localhost:${port}`);
     });
 
-export default app;
+// export default app;
