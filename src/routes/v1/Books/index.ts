@@ -6,7 +6,7 @@ import { unlink } from "node:fs/promises";
 const prisma = new PrismaClient();
 
 const app = new Elysia()
-    .get("", async ({ set }) => {
+    .get("/", async ({ set }) => {
         try {
             const books = await prisma.books.findMany();
             if (!books) {
