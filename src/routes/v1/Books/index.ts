@@ -60,7 +60,7 @@ const app = new Elysia()
             }
         }
     })
-    .post("add", async ({ request, set }) => {
+    .post("/add", async ({ request, set }) => {
         if (!request.headers.get("content-type")?.includes("multipart/form-data")) {
             set.status = 400;
             return {
@@ -113,7 +113,7 @@ const app = new Elysia()
             }
         }
     })
-    .patch("update/:id", async ({ params, set, request }) => {
+    .patch("/update/:id", async ({ params, set, request }) => {
         const { id } = params;
         if (!request.headers.get("content-type")?.includes("multipart/form-data")) {
             set.status = 400;
@@ -186,7 +186,7 @@ const app = new Elysia()
             }
         }
     })
-    .delete("delete/:id", async ({ params, set }) => {
+    .delete("/delete/:id", async ({ params, set }) => {
         const { id } = params;
         try {
             const bookId = parseInt(id);
