@@ -19,12 +19,12 @@ const app = new Elysia()
     .get('/test', () => ({ text: 'hello world' }))
     .group("/api", (app) => app.use(apiRouteV1))
     .onError(({ code, error, set }) => {
-        log(`Error ${code}: ${error.message}`);
+        console.log(error);
         set.status = code === 'NOT_FOUND' ? 404 : 500;
         return {
             success: false,
             message: code === 'NOT_FOUND' ? 'Not Found' : 'Internal Server Error',
-            error: process.env.NODE_ENV === 'production' ? null : error.message
+            error: process.env.NODE_ENV === 'production' ? null : error
         };
     })
     .listen(port, () => {
