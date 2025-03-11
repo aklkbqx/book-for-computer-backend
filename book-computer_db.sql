@@ -33,7 +33,7 @@ CREATE TABLE `BookContents` (
   `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`content`)),
   `type` enum('data','topic') NOT NULL DEFAULT 'data',
   `created_at` datetime(3) NOT NULL DEFAULT current_timestamp(3)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `BookContents`
@@ -60,7 +60,7 @@ CREATE TABLE `Books` (
   `book_image` varchar(100) NOT NULL,
   `type` enum('data','topic') NOT NULL DEFAULT 'data',
   `created_at` datetime(3) NOT NULL DEFAULT current_timestamp(3)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `Books`
@@ -88,7 +88,7 @@ CREATE TABLE `Users` (
   `profile` varchar(150) NOT NULL DEFAULT 'default-profile.jpg',
   `role` enum('USER','ADMIN') NOT NULL DEFAULT 'USER',
   `created_at` datetime(3) NOT NULL DEFAULT current_timestamp(3)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `Users`
@@ -112,7 +112,7 @@ CREATE TABLE `_prisma_migrations` (
   `rolled_back_at` datetime(3) DEFAULT NULL,
   `started_at` datetime(3) NOT NULL DEFAULT current_timestamp(3),
   `applied_steps_count` int(10) UNSIGNED NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `_prisma_migrations`
