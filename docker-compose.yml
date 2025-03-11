@@ -1,8 +1,8 @@
 services:
   app:
     build: .
-    ports:
-      - "5001:5001"
+    # ports:
+    #   - "5001:5001"
     volumes:
       - .:/app
       - /app/node_modules
@@ -12,31 +12,42 @@ services:
       - DB_USER=username
       - DB_PASSWORD=password
       - DB_NAME=book-computer-db
-    depends_on:
-      - mariadb
+    # depends_on:
+    #   - mariadb
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.book-for-computer.entrypoints=web"
+      - "traefik.http.routers.book-for-computer.rule=Host(`book-for-computer.aklkbqx.xyz`)"
+      - "traefik.http.services.book-for-computer.loadbalancer.server.port=5001"
+    networks:
+      - web_network
 
-  mariadb:
-    container_name: mariadb_book-computer
-    image: mariadb
-    restart: always
-    ports:
-      - 9906:3306
-    environment:
-      MARIADB_ROOT_PASSWORD: ROOT_PASSWORD
-      MARIADB_USER: username
-      MARIADB_PASSWORD: password
-      MARIADB_DATABASE: book-computer-db
-      TZ: 'Asia/Bangkok'
-    volumes:
-      - ./mariadb/data:/var/lib/mysql
+  # mariadb:
+  #   container_name: mariadb_book-computer
+  #   image: mariadb
+  #   restart: always
+  #   ports:
+  #     - 9906:3306
+  #   environment:
+  #     MARIADB_ROOT_PASSWORD: ROOT_PASSWORD
+  #     MARIADB_USER: username
+  #     MARIADB_PASSWORD: password
+  #     MARIADB_DATABASE: book-computer-db
+  #     TZ: 'Asia/Bangkok'
+  #   volumes:
+  #     - ./mariadb/data:/var/lib/mysql
 
-  phpmyadmin:
-    container_name: phpmyadmin_book-computer
-    image: phpmyadmin
-    restart: always
-    ports:
-      - 8888:80
-    environment:
-      PMA_HOST: mariadb
-    depends_on:
-      - mariadb
+  # phpmyadmin:
+  #   container_name: phpmyadmin_book-computer
+  #   image: phpmyadmin
+  #   restart: always
+  #   ports:
+  #     - 8888:80
+  #   environment:
+  #     PMA_HOST: mariadb
+  #   depends_on:
+  #     - mariadb
+
+networks:
+  web_network:
+    external: true
